@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  label {
+    margin-top: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  input[type="submit"] {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }
+  </style>
+<body>
+  <header>
+    <h1>Sign Up</h1>
+  </header>
+  <main>
+    <form id="signupForm" action="signup.php" method="POST">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirmPassword">Re-enter Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+      <input type="submit" value="Sign Up">
+    </form>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signupForm');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const dobInput = document.getElementById('dob');
+    const genderInput = document.getElementById('gender');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+  
+    signupForm.addEventListener('submit', function(event) {
+      if (!validateForm()) {
+        event.preventDefault();
+      }
+    });
+  
+    function validateForm() {
+      let isValid = true;
+  
+      if (!validateFirstName()) {
+        isValid = false;
+      }
+  
+      if (!validateLastName()) {
+        isValid = false;
+      }
+  
+      if (!validateDOB()) {
+        isValid = false;
+      }
+  
+      if (!validateGender()) {
+        isValid = false;
+      }
+  
+      if (!validateEmail()) {
+        isValid = false;
+      }
+  
+      if (!validatePassword()) {
+        isValid = false;
+      }
+  
+      if (!validateConfirmPassword()) {
+        isValid = false;
+      }
+  
+      return isValid;
+    }
+  
+    function validateFirstName() {
+      const firstNameValue = firstNameInput.value.trim();
+      const firstNameErrorMessage = document.getElementById('firstNameErrorMessage');
+  
+      if (firstNameValue == '') {
+        firstNameErrorMessage.textContent = 'First Name is required.';
+        return false;
+      } else {
+        firstNameErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function validateLastName() {
+      const lastNameValue = lastNameInput.value.trim();
+      const lastNameErrorMessage = document.getElementById('lastNameErrorMessage');
+  
+      if (lastNameValue == '') {
+        lastNameErrorMessage.textContent = 'Last Name is required.';
+        return false;
+      } else {
+        lastNameErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function validateDOB() {
+      const dobValue = dobInput.value.trim();
+      const dobErrorMessage = document.getElementById('dobErrorMessage');
+  
+      if (dobValue == '') {
+        dobErrorMessage.textContent = 'Date of Birth is required.';
+        return false;
+      } else {
+        dobErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function validateGender() {
+      const genderValue = genderInput.value.trim();
+      const genderErrorMessage = document.getElementById('genderErrorMessage');
+  
+      if (genderValue == '') {
+        genderErrorMessage.textContent = 'Gender is required.';
+        return false;
+      } else {
+        genderErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function validateEmail() {
+      const emailValue = emailInput.value.trim();
+      const emailErrorMessage = document.getElementById('emailErrorMessage');
+  
+      if (emailValue == '') {
+        emailErrorMessage.textContent = 'Email is required.';
+        return false;
+      } else if (!isValidEmail(emailValue)) {
+        emailErrorMessage.textContent = 'Invalid email address.';
+        return false;
+      } else {
+        emailErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function isValidEmail(email) {
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
+      return emailRegex.test(email);
+    }
+  
+    function validatePassword() {
+      const passwordValue = passwordInput.value.trim();
+      const passwordErrorMessage = document.getElementById('passwordErrorMessage');
+  
+      if (passwordValue == '') {
+        passwordErrorMessage.textContent = 'Password is required.';
+        return false;
+      } else if (passwordValue.length < 6) {
+        passwordErrorMessage.textContent = 'Password should be at least 6 characters.';
+        return false;
+      } else {
+        passwordErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  
+    function validateConfirmPassword() {
+      const confirmPasswordValue = confirmPasswordInput.value.trim();
+      const confirmPasswordErrorMessage = document.getElementById('confirmPasswordErrorMessage');
+  
+      if (confirmPasswordValue == '') {
+        confirmPasswordErrorMessage.textContent = 'Confirm Password is required.';
+        return false;
+      } else if (confirmPasswordValue !== passwordInput.value.trim()) {
+        confirmPasswordErrorMessage.textContent = 'Passwords do not match.';
+        return false;
+      } else {
+        confirmPasswordErrorMessage.textContent = '';
+        return true;
+      }
+    }
+  });
+  </script>
+</body>
+</html>

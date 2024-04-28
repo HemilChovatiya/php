@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Contact Form - PHP/MySQL Demo Code</title>
+    <style>
+        html {
+            background-color: f5f5f5;
+            text-transform: capitalize;
+            letter-spacing: 1.5px;
+        }
+
+        table {
+            border: none;
+            border-color: white;
+        }
+
+        label,
+        textarea,
+        div,
+        td,
+        tr,
+        th,
+        h3,
+        input {
+            background-color: white;
+
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: black;
+        }
+
+        div {
+            position: absolute;
+            top: 35;
+            left: 450;
+            width: 450;
+            border-radius: 4px;
+        }
+
+        td {
+            padding: 4px;
+            font-size: larger;
+            text-align-last: center;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            margin: 7px;
+            box-shadow: 6px 8px 10px rgba(0, 0, 0.1, 0.1);
+            transition: all 0.3s ease 0s;
+        }
+
+        select[class=dropdown],
+        option[class=opt],
+        input[type=email],
+        input[type=number],
+        input[type=text],
+        textarea[type=textarea] {
+            width: 257px;
+            height: 35px;
+            padding: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 9px;
+            box-shadow: 6px 8px 15px rgba(0, 0, 0, .2);
+            transition: all 0.3s ease 0s;
+            outline: solid 1px rgb(255, 255, 255)
+        }
+
+        input[type="submit"] {
+            width: 140px;
+            height: 45px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: white;
+            background-color: rgb(19, 17, 17);
+            border: none;
+            border-radius: 45px;
+            box-shadow: 6px 8px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: solid 1px rgb(255, 252, 252);
+        }
+
+        input[type="submit"]:hover {
+            color: #000;
+            background-color: #fff;
+            outline: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <fieldset>
+        <legend>Contact Form</legend>
+        <form name="frmContact" method="post" action="contact.php">
+            <p>
+                <label for="Name">Name </label>
+                <input type="text" name="txtName" id="txtName">
+            </p>
+            <p>
+                <label for="email">Email</label>
+                <input type="text" name="txtEmail" id="txtEmail">
+            </p>
+            <p>
+                <label for="phone">Phone</label>
+                <input type="text" name="txtPhone" id="txtPhone">
+            </p>
+            <p>
+                <label for="message">Message</label>
+                <textarea name="txtMessage" id="txtMessage"></textarea>
+            </p>
+            <p>&nbsp;</p>
+            <p>
+                <input type="submit" name="Submit" id="Submit" value="Submit">
+            </p>
+        </form>
+    </fieldset>
+
+
+</body>
+
+</html>
+
+

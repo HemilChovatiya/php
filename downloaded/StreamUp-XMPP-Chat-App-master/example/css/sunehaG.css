@@ -1,0 +1,25 @@
+.navbar{
+	border-radius: 0px;
+}
+.navbar strong{
+	font-size: 120%;
+}
+body #content .row{
+	position: relative;
+}
+body #login-form{
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	text-align: center;
+}
+#login-form img{
+	width: 150px;
+	height: auto;
+}
+.container h3 strong{
+	padding-bottom: 25px;
+}
+#logout{
+	display: block;	
+}
+
